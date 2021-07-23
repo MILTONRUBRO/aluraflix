@@ -6,5 +6,7 @@ import br.com.mosdev.aluraflix.model.Video;
 
 public interface VideoService {
 
-	List<Video> findAllVideos(); 
+	List<Video> findAllVideos();
+
+	Video getVideo(Long idVideo); 
 }

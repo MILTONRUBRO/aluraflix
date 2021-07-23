@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.mosdev.aluraflix.model.Video;
@@ -21,6 +22,12 @@ public class VideoController {
 	public ResponseEntity<List<VideoDTO>> listAllVideos(){
 		List<Video> videos = videoService.findAllVideos();
 		return ResponseEntity.ok(VideoDTO.convert(videos));
+	}
+	
+	@GetMapping("api/livros/{idVideo}")
+	public ResponseEntity<VideoDTO> getVideo(@PathVariable("idVideo") Long idVideo) {
+		Video video = videoService.getVideo(idVideo);
+		return ResponseEntity.ok(new VideoDTO(video));
 	}
 
 }
