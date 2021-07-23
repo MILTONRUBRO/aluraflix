@@ -9,10 +9,10 @@ public class VideoRequest {
 	@Size(min = 5, message = "Titulo deve ter no minimo 5 caracteres")
 	private String titulo;
 	@NotBlank
-	@Size(min = 5, message = "Titulo deve ter no minimo 5 caracteres")
+	@Size(min = 5, message = "Descrição deve ter no minimo 5 caracteres")
 	private String descricao;
 	@NotBlank
-	@Size(min = 5, message = "Titulo deve ter no minimo 20 caracteres")
+	@Size(min = 20, message = "URL deve ter no minimo 20 caracteres")
 	private String url;
 	
 	public String getTitulo() {
