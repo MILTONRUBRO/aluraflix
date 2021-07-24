@@ -40,4 +40,22 @@ public class VideoServiceImpl implements VideoService{
 	public Video save(Video video) {
 		return videoRepository.save(video);
 	}
+
+	@Transactional
+	@Override
+	public Video update(Video video, Long idVideo) {
+		Video savedVideo = this.getVideo(idVideo);
+		
+		savedVideo.setTitulo(video.getTitulo());
+		savedVideo.setDescricao(video.getDescricao());
+		savedVideo.setUrl(video.getUrl());
+		
+		return videoRepository.save(savedVideo);
+	}
+
+	@Override
+	public void delete(Long idVideo) {
+		Video savedVideo = this.getVideo(idVideo);
+		videoRepository.delete(savedVideo);
+	}
 }

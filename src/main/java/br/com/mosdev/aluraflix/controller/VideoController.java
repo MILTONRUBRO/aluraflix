@@ -6,9 +6,11 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,6 +41,19 @@ public class VideoController {
 	public ResponseEntity<VideoDTO> saveVideo(@Valid @RequestBody VideoRequest request){
 		Video video = request.newVideo();
 		return ResponseEntity.ok(new VideoDTO(videoService.save(video)));
+	}
+	
+	@PutMapping("api/videos/{idVideo}")
+	public ResponseEntity<VideoDTO> updateVideo(@Valid @RequestBody VideoRequest request, 
+			@PathVariable("idVideo") Long idVideo){
+		Video video = request.newVideo(); 
+		return ResponseEntity.ok(new VideoDTO(videoService.update(video, idVideo)));
+	}
+	
+	@DeleteMapping("api/videos/{idVideo}")
+	public ResponseEntity<Void> deleteVideo(@PathVariable("idVideo") Long idVideo) {
+		videoService.delete(idVideo);
+		return ResponseEntity.ok().build();
 	}
 
 }
