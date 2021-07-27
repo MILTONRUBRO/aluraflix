@@ -7,5 +7,6 @@ import br.com.mosdev.aluraflix.model.Categoria;
 public interface CategoriaService {
 	
 	List<Categoria> findAllCategories();
+	Categoria getCategorie(Long id);
 
 }

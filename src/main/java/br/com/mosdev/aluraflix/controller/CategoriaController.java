@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.mosdev.aluraflix.model.Categoria;
@@ -20,5 +21,11 @@ public class CategoriaController {
 	public ResponseEntity<List<Categoria>> getAllCategories(){
 		return ResponseEntity.ok(categoriaService.findAllCategories());
 	}
+	
+	@GetMapping("api/categorias/{id}")
+	public ResponseEntity<Categoria> getCategorie(@PathVariable("id") Long id){
+		return ResponseEntity.ok(categoriaService.getCategorie(id));
+	}
+	
 
 }
