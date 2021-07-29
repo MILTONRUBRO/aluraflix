@@ -2,13 +2,18 @@ package br.com.mosdev.aluraflix.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.mosdev.aluraflix.model.Categoria;
+import br.com.mosdev.aluraflix.model.CategoriaRequest;
 import br.com.mosdev.aluraflix.service.CategoriaService;
 
 @RestController
@@ -25,6 +30,11 @@ public class CategoriaController {
 	@GetMapping("api/categorias/{id}")
 	public ResponseEntity<Categoria> getCategorie(@PathVariable("id") Long id){
 		return ResponseEntity.ok(categoriaService.getCategorie(id));
+	}
+	
+	@PostMapping("api/categorias")
+	public void saveCategorie(@RequestBody @Valid CategoriaRequest request) {
+		
 	}
 	
 
