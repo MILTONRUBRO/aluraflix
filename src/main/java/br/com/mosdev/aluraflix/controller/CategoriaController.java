@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.mosdev.aluraflix.model.Categoria;
 import br.com.mosdev.aluraflix.model.CategoriaRequest;
+import br.com.mosdev.aluraflix.model.dto.CategoriaDTO;
 import br.com.mosdev.aluraflix.service.CategoriaService;
 
 @RestController
@@ -33,9 +34,10 @@ public class CategoriaController {
 	}
 	
 	@PostMapping("api/categorias")
-	public void saveCategorie(@RequestBody @Valid CategoriaRequest request) {
+	public ResponseEntity<CategoriaDTO> saveCategorie(@RequestBody @Valid CategoriaRequest request) {
+		Categoria categoria = request.newCategoria();
 		
+		return ResponseEntity.ok(new CategoriaDTO(categoriaService.save(categoria)));
 	}
-	
 
 }

@@ -4,10 +4,10 @@ import javax.validation.constraints.NotBlank;
 
 public class CategoriaRequest {
 	
-	@NotBlank
+	@NotBlank(message = "O titulo não pode ser vazio")
 	private String titulo;
 	
-	@NotBlank
+	@NotBlank(message = "A cor não pode ser vazia")	
 	private String cor;
 
 	public CategoriaRequest(@NotBlank String titulo, @NotBlank String cor) {
@@ -31,5 +31,8 @@ public class CategoriaRequest {
 		this.cor = cor;
 	}
 	
+	public Categoria newCategoria() {
+		return new Categoria(titulo, cor);
+	}
 
 }

@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.Fetch;
 
 @Entity
 public class Video {
@@ -14,6 +17,9 @@ public class Video {
 	private String titulo;
 	private String descricao;
 	private String url;
+	
+	@ManyToOne
+	private Categoria categoria;
 	
 	@Deprecated
 	public Video() {

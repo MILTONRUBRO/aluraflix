@@ -2,6 +2,8 @@ package br.com.mosdev.aluraflix.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,12 @@ public class CategoriaServiceImpl implements CategoriaService {
 	public Categoria getCategorie(Long id) {
 		return categoriaRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException());
+	}
+
+	@Override
+	@Transactional
+	public Categoria save(Categoria categoria) {
+		return categoriaRepository.save(categoria);
 	}
 
 }
