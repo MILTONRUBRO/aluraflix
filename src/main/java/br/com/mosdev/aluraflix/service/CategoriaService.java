@@ -9,5 +9,6 @@ public interface CategoriaService {
 	List<Categoria> findAllCategories();
 	Categoria getCategorie(Long id);
 	Categoria save(Categoria categoria);
+	Categoria update(Long id, Categoria categoria);
 
 }

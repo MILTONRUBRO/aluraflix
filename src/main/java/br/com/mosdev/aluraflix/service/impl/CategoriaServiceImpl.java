@@ -35,4 +35,15 @@ public class CategoriaServiceImpl implements CategoriaService {
 		return categoriaRepository.save(categoria);
 	}
 
+	@Override
+	@Transactional
+	public Categoria update(Long id, Categoria categoria) {
+		Categoria categorieSaved = this.getCategorie(id);
+		
+		categorieSaved.setCor(categoria.getCor());
+		categorieSaved.setTitulo(categoria.getTitulo());
+		
+		return categoriaRepository.save(categorieSaved);
+	}
+
 }

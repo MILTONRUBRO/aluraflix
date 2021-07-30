@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,6 +39,13 @@ public class CategoriaController {
 		Categoria categoria = request.newCategoria();
 		
 		return ResponseEntity.ok(new CategoriaDTO(categoriaService.save(categoria)));
+	}
+	
+	
+	@PutMapping("api/categorias/{id}")
+	public ResponseEntity<CategoriaDTO> updateCategorie(@RequestBody @Valid CategoriaRequest request, @PathVariable("id") Long id) {
+		Categoria categoria = request.newCategoria();
+		return ResponseEntity.ok(new CategoriaDTO(categoriaService.update(id, categoria)));
 	}
 
 }
