@@ -10,5 +10,6 @@ public interface CategoriaService {
 	Categoria getCategorie(Long id);
 	Categoria save(Categoria categoria);
 	Categoria update(Long id, Categoria categoria);
+	void delete(Long id);
 
 }
