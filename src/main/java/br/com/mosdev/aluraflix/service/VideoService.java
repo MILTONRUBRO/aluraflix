@@ -9,5 +9,6 @@ public interface VideoService {
 	Video getVideo(Long idVideo);
 	Video save(Video video);
 	Video update(Video video, Long idVideo);
-	void delete(Long idVideo); 
+	void delete(Long idVideo);
+	List<Video> findVideoByTitulo(String titulo); 
 }

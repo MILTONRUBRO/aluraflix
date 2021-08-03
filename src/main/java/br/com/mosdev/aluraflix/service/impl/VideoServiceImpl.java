@@ -58,4 +58,9 @@ public class VideoServiceImpl implements VideoService{
 		Video savedVideo = this.getVideo(idVideo);
 		videoRepository.delete(savedVideo);
 	}
+
+	@Override
+	public List<Video> findVideoByTitulo(String titulo) {
+		return videoRepository.findByTituloContainingIgnoreCase(titulo);
+	}
 }

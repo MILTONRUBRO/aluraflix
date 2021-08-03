@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.mosdev.aluraflix.model.Video;
@@ -63,6 +64,12 @@ public class VideoController {
 		logger.info("Deletar video de id: " + idVideo);
 		videoService.delete(idVideo);
 		return ResponseEntity.ok().build();
+	}
+	
+	@GetMapping("search")
+	public ResponseEntity<List<VideoDTO>> searchVideoByTitle(@RequestParam String titulo){
+		List<Video> videos = videoService.findVideoByTitulo(titulo);
+		return ResponseEntity.ok().body(VideoDTO.convert(videos));
 	}
 
 }
