@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import br.com.mosdev.aluraflix.errors.ResourceNotFoundException;
 import br.com.mosdev.aluraflix.model.Categoria;
+import br.com.mosdev.aluraflix.model.Video;
+import br.com.mosdev.aluraflix.model.dto.VideoDTO;
 import br.com.mosdev.aluraflix.repository.CategoriaRepository;
 import br.com.mosdev.aluraflix.service.CategoriaService;
 
@@ -50,6 +52,11 @@ public class CategoriaServiceImpl implements CategoriaService {
 	public void delete(Long id) {
 		Categoria categorieSaved = this.getCategorie(id);
 		categoriaRepository.delete(categorieSaved);
+	}
+
+	@Override
+	public List<Video> findCategorieAndVideo(Long id) {
+		return categoriaRepository.findById(id).get().getVideos();
 	}
 
 }

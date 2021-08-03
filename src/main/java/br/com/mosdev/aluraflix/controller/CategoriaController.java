@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.mosdev.aluraflix.model.Categoria;
 import br.com.mosdev.aluraflix.model.CategoriaRequest;
+import br.com.mosdev.aluraflix.model.Video;
 import br.com.mosdev.aluraflix.model.dto.CategoriaDTO;
+import br.com.mosdev.aluraflix.model.dto.VideoDTO;
 import br.com.mosdev.aluraflix.service.CategoriaService;
 
 @RestController
@@ -53,6 +55,12 @@ public class CategoriaController {
 	public ResponseEntity<Void> deleteVideo(@PathVariable("id") Long id) {
 		categoriaService.delete(id);
 		return ResponseEntity.ok().build();
+	}
+	
+	@GetMapping("api/categorias/{id}/videos")
+	public ResponseEntity<List<VideoDTO>> listCategorieAndVideos(@PathVariable long id) {
+			List<Video> categoriaVideos = categoriaService.findCategorieAndVideo(id);
+			return ResponseEntity.ok().body(VideoDTO.convert(categoriaVideos) );
 	}
 
 
