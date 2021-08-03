@@ -66,7 +66,7 @@ public class VideoController {
 		return ResponseEntity.ok().build();
 	}
 	
-	@GetMapping("search")
+	@GetMapping("api/videos/search")
 	public ResponseEntity<List<VideoDTO>> searchVideoByTitle(@RequestParam String titulo){
 		List<Video> videos = videoService.findVideoByTitulo(titulo);
 		return ResponseEntity.ok().body(VideoDTO.convert(videos));
