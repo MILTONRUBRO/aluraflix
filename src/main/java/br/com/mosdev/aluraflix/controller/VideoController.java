@@ -1,6 +1,7 @@
 package br.com.mosdev.aluraflix.controller;
 
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.validation.Valid;
@@ -31,21 +32,21 @@ public class VideoController {
 	
 	@GetMapping("api/videos")
 	public ResponseEntity<List<VideoDTO>> listAllVideos(){
-		logger.info("Busca todos os videos");
+		logger.log(Level.INFO, "Listando todos os videos");
 		List<Video> videos = videoService.findAllVideos();
 		return ResponseEntity.ok(VideoDTO.convert(videos));
 	}
 	
 	@GetMapping("api/videos/{idVideo}")
 	public ResponseEntity<VideoDTO> getVideo(@PathVariable("idVideo") Long idVideo) {
-		logger.info("Busca um video de id: " + idVideo);
+		logger.log(Level.INFO, "Buscando um video de id {0}", idVideo);
 		Video video = videoService.getVideo(idVideo);
 		return ResponseEntity.ok(new VideoDTO(video));
 	}
 	
 	@PostMapping("api/videos")
 	public ResponseEntity<VideoDTO> saveVideo(@Valid @RequestBody VideoRequest request){
-		logger.info("Adicionando um novo video");
+		logger.log(Level.INFO, "Adicionando um novo video {0}", request);
 		Video video = request.newVideo();
 		return ResponseEntity.ok(new VideoDTO(videoService.save(video)));
 	}
@@ -53,21 +54,21 @@ public class VideoController {
 	@PutMapping("api/videos/{idVideo}")
 	public ResponseEntity<VideoDTO> updateVideo(@Valid @RequestBody VideoRequest request, 
 			@PathVariable("idVideo") Long idVideo){
-		logger.info("Atualizar video de id: " + idVideo);
-
+		logger.log(Level.INFO, "Atualizando um video de id {0}", idVideo);
 		Video video = request.newVideo(); 
 		return ResponseEntity.ok(new VideoDTO(videoService.update(video, idVideo)));
 	}
 	
 	@DeleteMapping("api/videos/{idVideo}")
 	public ResponseEntity<Void> deleteVideo(@PathVariable("idVideo") Long idVideo) {
-		logger.info("Deletar video de id: " + idVideo);
+		logger.log(Level.INFO, "Deletando um video de id {0}", idVideo);
 		videoService.delete(idVideo);
 		return ResponseEntity.ok().build();
 	}
 	
 	@GetMapping("api/videos/search")
 	public ResponseEntity<List<VideoDTO>> searchVideoByTitle(@RequestParam String titulo){
+		logger.log(Level.INFO, "Buscando um video com o titulo {0}", titulo);
 		List<Video> videos = videoService.findVideoByTitulo(titulo);
 		return ResponseEntity.ok().body(VideoDTO.convert(videos));
 	}
