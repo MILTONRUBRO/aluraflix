@@ -15,6 +15,8 @@ public class VideoRequest {
 	@Size(min = 20, message = "URL deve ter no minimo 20 caracteres")
 	private String url;
 	
+	private Long idCategoria;
+	
 	public String getTitulo() {
 		return titulo;
 	}
@@ -36,6 +38,14 @@ public class VideoRequest {
 	}
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	
+	public Long getIdCategoria() {
+		return idCategoria;
+	}
+
+	public void setIdCategoria(Long idCategoria) {
+		this.idCategoria = idCategoria;
 	}
 
 	public VideoRequest(String titulo, String descricao, String url) {
