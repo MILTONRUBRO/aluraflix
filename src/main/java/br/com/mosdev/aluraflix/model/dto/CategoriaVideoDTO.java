@@ -3,7 +3,6 @@ package br.com.mosdev.aluraflix.model.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.mosdev.aluraflix.model.Categoria;
 import br.com.mosdev.aluraflix.model.Video;
 
 public class CategoriaVideoDTO {
