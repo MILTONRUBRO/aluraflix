@@ -57,5 +57,14 @@ public class VideoRequest {
 	public Video newVideo() {
 		return new Video(titulo, descricao,url);
 	}
+	
+	@Override
+	public String toString() {
+		return "Titulo: " + titulo +"--"+ 
+			   "Descrição: " + descricao + "--" + 
+			   "URL: " + url;
+	}
+	
+
 
 }
