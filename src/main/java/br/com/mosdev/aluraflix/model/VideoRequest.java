@@ -64,7 +64,5 @@ public class VideoRequest {
 			   "Descrição: " + descricao + "--" + 
 			   "URL: " + url;
 	}
-	
-
 
 }

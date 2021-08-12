@@ -61,6 +61,5 @@ public class Categoria {
 	public void setVideos(List<Video> videos) {
 		this.videos = videos;
 	}
-	
 
 }
