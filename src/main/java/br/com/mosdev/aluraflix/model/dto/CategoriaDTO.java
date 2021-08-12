@@ -32,4 +32,10 @@ public class CategoriaDTO {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+	
+	@Override
+	public String toString() {
+		return "Cor: " + cor + "--" + "Titulo: " + titulo;
+	}
+	
 }
