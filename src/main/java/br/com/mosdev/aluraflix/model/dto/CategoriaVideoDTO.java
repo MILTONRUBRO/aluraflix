@@ -12,7 +12,6 @@ public class CategoriaVideoDTO {
 	private String cor;
 	private List<Video> videos = new ArrayList<>();
 	
-	
 	public String getTitulo() {
 		return titulo;
 	}
@@ -36,6 +35,11 @@ public class CategoriaVideoDTO {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	@Override
+	public String toString() {
+		return "Id: " + id + "--" + "Titulo: " + titulo + "--" + "Cor: " + cor + "--" + "Videos: " + videos;
 	}
 
 }
