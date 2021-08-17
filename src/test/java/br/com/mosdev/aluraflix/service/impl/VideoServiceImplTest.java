@@ -2,6 +2,8 @@ package br.com.mosdev.aluraflix.service.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Optional;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.BDDMockito;
@@ -34,9 +36,17 @@ public class VideoServiceImplTest {
 
 
 	@Test
-	void testSaveVideo() {
+	public void testSaveVideo() {
 		BDDMockito.given(videoRepository.save(Mockito.any(Video.class))).willReturn(getMockVideo());
 		Video videoSaved = videoService.save(new Video());
+		
+		assertNotNull(videoSaved);
+	}
+	
+	@Test
+	public void testGetVideo() {
+		BDDMockito.given(videoRepository.findById(Mockito.any())).willReturn(Optional.of(getMockVideo()));
+		Video videoSaved = videoService.getVideo(1L);
 		
 		assertNotNull(videoSaved);
 	}
