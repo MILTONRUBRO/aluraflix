@@ -59,6 +59,14 @@ public class VideoServiceImplTest {
 		
 		assertNotNull(videos);
 	}
+	
+	@Test
+	public void testGetListVideosByTitulo() {
+		BDDMockito.given(videoRepository.findByTituloContainingIgnoreCase(TITULO)).willReturn(List.of(getMockVideo()));
+		List<Video> videos = videoService.findVideoByTitulo(TITULO);
+		
+		assertNotNull(videos);
+	}
 
 	private Video getMockVideo() {
 		return new Video(TITULO, DESCRICAO, URL);
