@@ -2,6 +2,8 @@ package br.com.mosdev.aluraflix.service.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Optional;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.BDDMockito;
@@ -27,6 +29,7 @@ public class CategoriaServiceImplTest {
 	@Autowired
 	private CategoriaService  categoriaService;
 	
+	private static final Long ID = 1L;
 	private static final String TITULO = "Titulo teste";
 	private static final String COR = "azul";
 
@@ -34,6 +37,14 @@ public class CategoriaServiceImplTest {
 	public void testSaveCategorie() {
 		BDDMockito.given(categoriaRepository.save(Mockito.any(Categoria.class))).willReturn(getCategoria());
 		Categoria categorie = categoriaService.save(new Categoria());
+		
+		assertNotNull(categorie);
+	}
+	
+	@Test
+	public void testGetCategorie() {
+		BDDMockito.given(categoriaRepository.findById(Mockito.anyLong())).willReturn(Optional.of(getCategoria()));
+		Categoria categorie = categoriaService.getCategorie(ID);
 		
 		assertNotNull(categorie);
 	}
