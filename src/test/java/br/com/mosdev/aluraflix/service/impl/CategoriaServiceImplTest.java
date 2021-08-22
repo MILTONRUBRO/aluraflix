@@ -48,6 +48,14 @@ public class CategoriaServiceImplTest {
 		
 		assertNotNull(categorie);
 	}
+	
+	@Test
+	public void testUpdateCategorie() {
+		BDDMockito.given(categoriaRepository.save(Mockito.any(Categoria.class))).willReturn(getCategoria());
+		Categoria categorie = categoriaService.update(ID, getCategoria());
+		
+		assertNotNull(categorie);
+	}
 
 	private Categoria getCategoria() {
 		return new Categoria(TITULO, COR);
