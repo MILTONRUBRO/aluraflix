@@ -47,6 +47,8 @@ public class CategoriaServiceImplTest {
 		Categoria categorie = categoriaService.getCategorie(ID);
 		
 		assertNotNull(categorie);
+		assertEquals(TITULO, categorie.getTitulo());
+		assertEquals(COR, categorie.getCor());
 	}
 	
 	@Test
