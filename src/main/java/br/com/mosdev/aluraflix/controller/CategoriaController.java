@@ -33,19 +33,19 @@ public class CategoriaController {
 	
 	@GetMapping("api/categorias")
 	public ResponseEntity<List<Categoria>> getAllCategories(){
-		logger.log(Level.INFO, "Busca todas as categorias");
+		logger.log(Level.INFO, "Buscando todas as categorias");
 		return ResponseEntity.ok(categoriaService.findAllCategories());
 	}
 	
 	@GetMapping("api/categorias/{id}")
 	public ResponseEntity<Categoria> getCategorie(@PathVariable("id") Long id){
-		logger.log(Level.INFO, "Busca uma categoria de id: {0}", id);
+		logger.log(Level.INFO, "Buscando uma categoria de id: {0}", id);
 		return ResponseEntity.ok(categoriaService.getCategorie(id));
 	}
 	
 	@PostMapping("api/categorias")
 	public ResponseEntity<CategoriaDTO> saveCategorie(@RequestBody @Valid CategoriaRequest request) {
-		logger.log(Level.INFO, "Salva uma nova categoria {0}", request);
+		logger.log(Level.INFO, "Salvando uma nova categoria {0}", request);
 		Categoria categoria = request.newCategoria();
 		return ResponseEntity.ok(new CategoriaDTO(categoriaService.save(categoria)));
 	}
@@ -53,21 +53,21 @@ public class CategoriaController {
 	
 	@PutMapping("api/categorias/{id}")
 	public ResponseEntity<CategoriaDTO> updateCategorie(@RequestBody @Valid CategoriaRequest request, @PathVariable("id") Long id) {
-		logger.log(Level.INFO, "Atualiza a categoria de id {0}", id);
+		logger.log(Level.INFO, "Atualizando a categoria de id {0}", id);
 		Categoria categoria = request.newCategoria();
 		return ResponseEntity.ok(new CategoriaDTO(categoriaService.update(id, categoria)));
 	}
 	
 	@DeleteMapping("api/categorias/{id}")
 	public ResponseEntity<Void> deleteVideo(@PathVariable("id") Long id) {
-		logger.log(Level.INFO, "Deleta a categoria de id {0}", id);
+		logger.log(Level.INFO, "Deletando a categoria de id {0}", id);
 		categoriaService.delete(id);
 		return ResponseEntity.ok().build();
 	}
 	
 	@GetMapping("api/categorias/{id}/videos")
 	public ResponseEntity<List<VideoDTO>> listCategorieAndVideos(@PathVariable long id) {
-		logger.log(Level.INFO, "Lista as categorias de id {0}", id);
+		logger.log(Level.INFO, "Listando as categorias de id {0}", id);
 		List<Video> categoriaVideos = categoriaService.findCategorieAndVideo(id);
 		return ResponseEntity.ok().body(VideoDTO.convert(categoriaVideos) );
 	}
