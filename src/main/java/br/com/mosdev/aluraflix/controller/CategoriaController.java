@@ -39,7 +39,7 @@ public class CategoriaController {
 	
 	@GetMapping("api/categorias/{id}")
 	public ResponseEntity<Categoria> getCategorie(@PathVariable("id") Long id){
-		logger.log(Level.INFO, "Buscando uma categoria de id: {0}", id);
+		logger.log(Level.INFO, "Buscando uma categoria pelo id: {0}", id);
 		return ResponseEntity.ok(categoriaService.getCategorie(id));
 	}
 	
